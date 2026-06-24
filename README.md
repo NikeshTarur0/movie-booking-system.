@@ -1,35 +1,82 @@
-# Movie Booking System
+# Movie Booking System (Python Flask)
 
-A web-based Movie Booking System built using PHP, MySQL, HTML, CSS, JavaScript, and Bootstrap.
+A full-featured Movie Booking System developed using **Python, Flask, SQLAlchemy, SQLite/MySQL, HTML, CSS, JavaScript, and Bootstrap**. The application enables users to browse movies, select showtimes, book tickets, and manage reservations through a modern web interface.
 
 ## Features
 
-- User Registration & Login
-- Browse Movies
-- View Movie Details
-- Book Tickets
-- User Dashboard
-- Admin Panel
-- Manage Movies
-- Manage Bookings
+### User Features
+
+* User Registration & Authentication
+* Browse and Search Movies
+* Movie Details and Showtimes
+* Interactive Seat Selection
+* Secure Ticket Booking System
+* User Dashboard
+* Booking History Management
+
+### Admin Features
+
+* Admin Dashboard
+* Manage Movies (Add, Edit, Delete)
+* Manage Showtimes
+* Manage Users
+* Manage Bookings
+* Revenue and Booking Statistics
 
 ## Technologies Used
 
-- PHP
-- MySQL
-- HTML
-- CSS
-- JavaScript
-- Bootstrap
+* Python
+* Flask
+* SQLAlchemy
+* SQLite / MySQL
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap
+
+## Project Highlights
+
+* Role-Based Authentication System
+* Database-Driven Architecture
+* Transaction-Safe Booking Process
+* Responsive User Interface
+* MVC-Inspired Flask Structure
+* Admin Control Panel
+* Real-Time Seat Availability Management
 
 ## Installation
 
-1. Download or clone the repository.
-2. Import `database.sql` into MySQL.
-3. Configure database settings in `config.php`.
-4. Start Apache and MySQL using XAMPP.
-5. Open the project in your browser.
+```bash
+git clone https://github.com/NikeshTarur0/movie-booking-system.git
+cd movie-booking-system
+
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000
+```
+
+## Future Enhancements
+
+* Payment Gateway Integration
+* Email Notifications
+* QR Code Ticket Generation
+* Movie Recommendation System
+* REST API Development
+* Docker Deployment
 
 ## Author
 
 Nikesh Tarur
+
+GitHub: https://github.com/NikeshTarur0
