@@ -1,48 +1,59 @@
 # Movie Booking System (Python Flask)
 
-A full-featured Movie Booking System developed using **Python, Flask, SQLAlchemy, SQLite/MySQL, HTML, CSS, JavaScript, and Bootstrap**. The application enables users to browse movies, select showtimes, book tickets, and manage reservations through a modern web interface.
+A comprehensive Movie Booking System developed primarily using **Python (Flask)** with MySQL database integration. The project includes user authentication, movie management, ticket booking, seat reservation, and an administrative dashboard. The system was inspired by and extended from an earlier PHP implementation, with the architecture redesigned for Python-based web development.
 
-## Features
+## Key Features
 
 ### User Features
 
-* User Registration & Authentication
+* User Registration and Login
+* Secure Authentication System
 * Browse and Search Movies
 * Movie Details and Showtimes
-* Interactive Seat Selection
-* Secure Ticket Booking System
-* User Dashboard
-* Booking History Management
+* Ticket Booking System
+* Seat Selection Management
+* User Dashboard and Booking History
 
 ### Admin Features
 
 * Admin Dashboard
-* Manage Movies (Add, Edit, Delete)
+* Manage Movies
 * Manage Showtimes
-* Manage Users
 * Manage Bookings
-* Revenue and Booking Statistics
+* Manage Users
+* Revenue and Booking Analytics
 
 ## Technologies Used
+
+### Backend
 
 * Python
 * Flask
 * SQLAlchemy
+* Flask-Login
 * SQLite / MySQL
+
+### Frontend
+
 * HTML5
 * CSS3
-* JavaScript
 * Bootstrap
+* JavaScript
+
+### Additional Technologies
+
+* PHP (Legacy Version Reference)
+* Git & GitHub
 
 ## Project Highlights
 
-* Role-Based Authentication System
+* Role-Based Access Control
 * Database-Driven Architecture
-* Transaction-Safe Booking Process
+* Transaction-Safe Booking System
+* Interactive Seat Reservation Logic
 * Responsive User Interface
-* MVC-Inspired Flask Structure
-* Admin Control Panel
-* Real-Time Seat Availability Management
+* Scalable Flask Application Structure
+* Admin Management System
 
 ## Installation
 
@@ -60,7 +71,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open:
+Visit:
 
 ```text
 http://127.0.0.1:5000
@@ -68,12 +79,12 @@ http://127.0.0.1:5000
 
 ## Future Enhancements
 
-* Payment Gateway Integration
-* Email Notifications
+* Online Payment Gateway
 * QR Code Ticket Generation
-* Movie Recommendation System
+* Email Notifications
 * REST API Development
 * Docker Deployment
+* AI-Based Movie Recommendations
 
 ## Author
 
