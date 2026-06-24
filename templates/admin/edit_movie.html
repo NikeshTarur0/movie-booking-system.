@@ -1,0 +1,54 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h2 class="fw-bold mb-1 text-white">Edit Movie</h2>
+            <p class="text-muted mb-0">Modify information for: {{ movie.title }}</p>
+        </div>
+        <a href="{{ url_for('admin_manage_movies') }}" class="btn btn-outline-custom">
+            <i class="bi bi-chevron-left"></i> Back to Movies
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-card p-5 shadow-lg">
+                <form method="POST" action="">
+                    <div class="mb-4">
+                        <label for="title" class="form-label text-muted">Movie Title *</label>
+                        <input type="text" class="form-control form-control-custom" id="title" name="title" value="{{ movie.title }}" required placeholder="e.g. Interstellar">
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="form-label text-muted">Description</label>
+                        <textarea class="form-control form-control-custom" id="description" name="description" rows="5" placeholder="Enter movie description...">{{ movie.description }}</textarea>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="duration" class="form-label text-muted">Duration (minutes) *</label>
+                            <input type="number" class="form-control form-control-custom" id="duration" name="duration" value="{{ movie.duration }}" required min="1" placeholder="e.g. 150">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="rating" class="form-label text-muted">Rating (0-10)</label>
+                            <input type="number" step="0.1" class="form-control form-control-custom" id="rating" name="rating" value="{{ movie.rating }}" min="0" max="10" placeholder="e.g. 8.7">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="poster_image" class="form-label text-muted">Poster Image filename / URL</label>
+                        <input type="text" class="form-control form-control-custom" id="poster_image" name="poster_image" value="{{ movie.poster_image or '' }}" placeholder="e.g. interstellar.jpg">
+                        <small class="text-muted small">Place custom posters in `static/images/` and input the filename here.</small>
+                    </div>
+
+                    <div class="mt-4 pt-3 d-flex justify-content-end gap-3">
+                        <a href="{{ url_for('admin_manage_movies') }}" class="btn btn-outline-secondary px-4">Cancel</a>
+                        <button type="submit" class="btn btn-primary-gradient px-5">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

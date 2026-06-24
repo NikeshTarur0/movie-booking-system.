@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Booking Confirmed - MovieBooking{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="glass-card p-5 border border-success border-opacity-20 shadow-lg">
+                <div class="display-1 text-success mb-4">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h2 class="fw-bold mb-3 text-white">Booking Confirmed!</h2>
+                <p class="lead text-muted mb-4">
+                    Your seats have been booked successfully.
+                </p>
+                <div class="alert alert-dark glass-card border border-secondary border-opacity-10 text-start p-4 mb-4">
+                    <div class="row mb-2">
+                        <div class="col-5 text-muted">Booking ID:</div>
+                        <div class="col-7 fw-bold text-white">#{{ booking.id }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-5 text-muted">Total Seats:</div>
+                        <div class="col-7 fw-bold text-white">{{ booking.total_seats }}</div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-5 text-muted">Total Price:</div>
+                        <div class="col-7 fw-bold text-success">${{ "%.2f"|format(booking.total_price) }}</div>
+                    </div>
+                </div>
+                
+                <p class="text-muted small mb-0">
+                    <i class="bi bi-arrow-repeat spin"></i> Redirecting you to your dashboard in 3 seconds...
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    setTimeout(function() {
+        window.location.href = "{{ url_for('dashboard') }}";
+    }, 3000);
+</script>
+{% endblock %}

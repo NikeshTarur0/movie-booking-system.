@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} - MovieBooking{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row g-5">
+        <!-- Movie Poster -->
+        <div class="col-md-4">
+            <div class="glass-card movie-details-poster rounded-3 overflow-hidden">
+                {% if movie.poster_image %}
+                    {% if movie.poster_image.startswith('http') %}
+                        <img src="{{ movie.poster_image }}" class="img-fluid w-100" alt="{{ movie.title }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/' + movie.poster_image) }}" class="img-fluid w-100" alt="{{ movie.title }}" onerror="this.src='https://via.placeholder.com/300x450?text=No+Image';">
+                    {% endif %}
+                {% else %}
+                    <img src="https://via.placeholder.com/300x450?text=No+Image" class="img-fluid w-100" alt="{{ movie.title }}">
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Movie Details -->
+        <div class="col-md-8">
+            <h1 class="fw-extrabold mb-3 display-4 fw-bold">{{ movie.title }}</h1>
+            
+            <div class="mb-4 d-flex gap-3 align-items-center">
+                <span class="badge bg-secondary px-3 py-2 fs-6"><i class="bi bi-clock-fill me-1"></i> {{ movie.duration }} mins</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fs-6"><i class="bi bi-star-fill me-1"></i> {{ movie.rating }}/10</span>
+            </div>
+            
+            <h5 class="fw-bold mt-4 mb-3 text-muted uppercase" style="font-size: 0.9rem; letter-spacing: 1px;">Description</h5>
+            <p class="lead text-light mb-5" style="font-size: 1.15rem; line-height: 1.7;">
+                {{ movie.description }}
+            </p>
+            
+            <h4 class="fw-bold mb-4">Available Showtimes</h4>
+            {% if showtimes %}
+                <div class="d-flex flex-column gap-3">
+                    {% for st in showtimes %}
+                        <div class="glass-card d-flex flex-column flex-sm-row justify-content-between align-items-sm-center p-4 border rounded shadow-sm">
+                            <div class="mb-3 mb-sm-0">
+                                <div class="fs-5 fw-bold mb-1 text-white">
+                                    <i class="bi bi-calendar-check text-info me-2"></i> {{ st.show_date.strftime('%d %b %Y') }}
+                                </div>
+                                <div class="text-muted">
+                                    <span class="me-3"><i class="bi bi-clock text-info me-1"></i> {{ st.show_time.strftime('%I:%M %p') }}</span>
+                                    <span><i class="bi bi-tag-fill text-info me-1"></i> Price: ${{ "%.2f"|format(st.price) }}</span>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('book_ticket', showtime_id=st.id) }}" class="btn btn-primary-gradient px-4">
+                                Book Ticket <i class="bi bi-arrow-right-short ms-1"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-dismissible fade show border-0 text-white bg-dark p-4 glass-card" style="background: rgba(255,255,255,0.03);">
+                    <i class="bi bi-info-circle-fill text-warning me-2 fs-5"></i> 
+                    No valid showtimes available for this movie right now. Check back soon!
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

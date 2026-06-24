@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - MovieBooking{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="auth-form-wrapper shadow-lg">
+                <h3 class="text-center fw-bold mb-4 text-white">Register</h3>
+                
+                <form method="POST" action="">
+                    <div class="mb-3">
+                        <label for="name" class="form-label text-muted">Full Name</label>
+                        <input type="text" class="form-control form-control-custom" id="name" name="name" placeholder="John Doe" required value="{{ request.form.get('name', '') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-muted">Email Address</label>
+                        <input type="email" class="form-control form-control-custom" id="email" name="email" placeholder="name@example.com" required value="{{ request.form.get('email', '') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-muted">Password</label>
+                        <input type="password" class="form-control form-control-custom" id="password" name="password" placeholder="Min. 6 characters" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirm_password" class="form-label text-muted">Confirm Password</label>
+                        <input type="password" class="form-control form-control-custom" id="confirm_password" name="confirm_password" placeholder="Repeat your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary-gradient w-100 py-2.5">Register</button>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-muted mb-0">Already have an account? <a href="{{ url_for('login') }}" class="text-info fw-bold text-decoration-none">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

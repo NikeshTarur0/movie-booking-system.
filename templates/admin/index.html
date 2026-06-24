@@ -1,0 +1,89 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <h2 class="fw-bold mb-4 text-white">Dashboard Overview</h2>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="glass-card p-4 border border-primary border-opacity-10">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="card-title text-muted text-uppercase mb-0">Total Movies</h6>
+                    <i class="bi bi-camera-reels text-primary fs-4"></i>
+                </div>
+                <p class="display-6 fw-bold text-white mb-0">{{ movies_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 border border-success border-opacity-10">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="card-title text-muted text-uppercase mb-0">Total Users</h6>
+                    <i class="bi bi-people text-success fs-4"></i>
+                </div>
+                <p class="display-6 fw-bold text-white mb-0">{{ users_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 border border-info border-opacity-10">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="card-title text-muted text-uppercase mb-0">Total Bookings</h6>
+                    <i class="bi bi-ticket-detailed text-info fs-4"></i>
+                </div>
+                <p class="display-6 fw-bold text-white mb-0">{{ bookings_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 border border-warning border-opacity-10">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="card-title text-muted text-uppercase mb-0">Total Revenue</h6>
+                    <i class="bi bi-currency-dollar text-warning fs-4"></i>
+                </div>
+                <p class="display-6 fw-bold text-white mb-0">${{ "%.2f"|format(revenue) }}</p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="fw-bold mb-4 text-white">Recent Bookings</h4>
+    <div class="glass-card overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-custom align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Movie</th>
+                        <th>Showtime</th>
+                        <th>Seats</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in recent_bookings %}
+                    <tr>
+                        <td class="fw-bold text-muted">#{{ b.id }}</td>
+                        <td class="text-white fw-bold">{{ b.user.name }}</td>
+                        <td class="text-white">{{ b.showtime.movie.title }}</td>
+                        <td>
+                            {{ b.showtime.show_date.strftime('%d %b %Y') }} at {{ b.showtime.show_time.strftime('%I:%M %p') }}
+                        </td>
+                        <td>{{ b.total_seats }}</td>
+                        <td class="text-white">${{ "%.2f"|format(b.total_price) }}</td>
+                        <td>
+                            {% if b.status == 'confirmed' %}
+                                <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 badge-pill-custom">Confirmed</span>
+                            {% else %}
+                                <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-25 badge-pill-custom">Cancelled</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% if not recent_bookings %}
+                        <tr><td colspan="7" class="text-center py-4 text-muted">No bookings found.</td></tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

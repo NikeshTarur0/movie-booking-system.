@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - MovieBooking{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="auth-form-wrapper shadow-lg">
+                <h3 class="text-center fw-bold mb-4 text-white">Login</h3>
+                
+                <form method="POST" action="">
+                    <div class="mb-4">
+                        <label for="email" class="form-label text-muted">Email Address</label>
+                        <input type="email" class="form-control form-control-custom" id="email" name="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label text-muted">Password</label>
+                        <input type="password" class="form-control form-control-custom" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary-gradient w-100 py-2.5 mt-2">Login</button>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-muted mb-0">Don't have an account? <a href="{{ url_for('register') }}" class="text-info fw-bold text-decoration-none">Register here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
